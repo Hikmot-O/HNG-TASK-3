@@ -102,13 +102,33 @@ const Gallery = (props) => {
     setGalleryImages(_galleryImages);
   };
   return (
-    <section className="scroll-smooth grid  sm:grid-cols-2 xl:grid-cols-3 gap-12 px-5 lg:px-20 py-[100px]">
+    <section className="w-screen mx-auto scroll-smooth grid sm:grid-cols-2 xl:grid-cols-3 gap-12 px-5 lg:px-20 py-[100px]">
       {galleryImages.map((image, index) => (
         <div
           // onMouseMove={(e) => {
           //   console.log(e.pageX, e.pageY);
           // }}
           key={index}
+          // onDragStart={(e) => {
+          //   draggedItem.current = index;
+          //   e.target.style.opacity = "0";
+          // }}
+          // //When on top of another item
+          // onDrag={(e) => {
+          //   e.target.style.opacity = "1";
+          // }}
+          // onDragEnter={(e) => (draggedOverItem.current = index)}
+          // onDragEnd={(e) => {
+          //   sortGallery();
+          //   e.target.style.opacity = "1";
+          // }}
+          draggable
+          className="relative translate-x-1 duration-[.2s] ease-in-out  bg-gray-400 w-auto h-[300px] rounded-[14px] shadow-lg cursor-move"
+        >
+          <div className="z-[1000] absolute bg-gray-100 text-[#010101] rounded-[16px] w-max ml-3 mt-3 py-1 px-4">
+            {image.tag}
+          </div>
+          <img
           onDragStart={(e) => {
             draggedItem.current = index;
             e.target.style.opacity = "0";
@@ -120,15 +140,9 @@ const Gallery = (props) => {
           onDragEnter={(e) => (draggedOverItem.current = index)}
           onDragEnd={(e) => {
             sortGallery();
-            e.target.style.opacity = "0.99999";
+            e.target.style.opacity = "1";
           }}
           draggable
-          className="relative hover:scale-[1.05] translate-x-1 duration-[.2s] ease-in-out  bg-gray-400 w-auto h-[300px] rounded-[14px] shadow-lg cursor-move"
-        >
-          <div className="z-[1000] absolute bg-gray-100 text-[#010101] rounded-[16px] w-max ml-3 mt-3 py-1 px-4">
-            {image.tag}
-          </div>
-          <img
             src={image.src}
             alt=""
             className="w-full h-[300px] rounded-[14px]"
