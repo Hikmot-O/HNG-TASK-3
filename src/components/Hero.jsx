@@ -3,10 +3,10 @@ import React, { useState, useCallback } from "react";
 const Hero = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const searchHandler = (e) => {
-    e.preventDefault();
-    console.log(e.target[0].value)
-    setSearchValue(e.target[0].value);
-    props.onSearch(e.target[0].value);
+    // e.preventDefault();
+    console.log(e.target.value)
+    setSearchValue(e.target.value);
+    props.onSearch(e.target.value);
   };
   return (
     <section className="bg-gray-500">
@@ -23,10 +23,10 @@ const Hero = (props) => {
         <h2 className="text-white text-2xl mb-3 font-[600]">
           Search High Resolution Images
         </h2>
-        <form action="" onSubmit={searchHandler}  className="">
+        <form action="" onSubmit={(e)=>{e.preventDefault()}}  className="">
           <input
-            // onChange={searchHandler}
-            // value={searchValue}
+            onChange={searchHandler}
+            value={searchValue}
             type="text"
             className="bg-white w-full outline-none py-2 px-6 rounded-[40px]"
             placeholder="Search Image"

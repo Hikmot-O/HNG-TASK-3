@@ -15,7 +15,7 @@ const HomePage = (props) => {
     <section>
       <Hero onSearch={searchHandler} />
       <Gallery Result={searchResult}  />
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 };

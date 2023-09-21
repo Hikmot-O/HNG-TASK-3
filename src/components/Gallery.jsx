@@ -125,7 +125,7 @@ const Gallery = (props) => {
           draggable
           className="relative hover:scale-[1.05] translate-x-1 duration-[.2s] ease-in-out  bg-gray-400 w-auto h-[300px] rounded-[14px] shadow-lg cursor-move"
         >
-          <div className="absolute bg-gray-100 text-[#010101] rounded-[16px] w-max ml-3 mt-3 py-1 px-4">
+          <div className="z-[1000] absolute bg-gray-100 text-[#010101] rounded-[16px] w-max ml-3 mt-3 py-1 px-4">
             {image.tag}
           </div>
           <img

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/Firebase";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
@@ -13,6 +16,7 @@ const SignUp = () => {
         return;
       }
       const user = await createUserWithEmailAndPassword(auth, email, password);
+      navigate('/gallery')
       console.log(user);
     } catch (err) {
       console.log(err.message);
@@ -61,12 +65,12 @@ const SignUp = () => {
           />
         </div>
         <button className="text-blue-950 bg-blue-300 text-lg font-[500] rounded-md w-full mt-10 h-14">
-          Sigup
+          Signup
         </button>
       </form>
       <p className="mt-2 text-blue-50">
         Already have an account?{" "}
-        <Link to="/gallery" className="text-blue-300 cursor-pointer">
+        <Link to="/" className="text-blue-300 cursor-pointer">
           Login
         </Link>
       </p>
