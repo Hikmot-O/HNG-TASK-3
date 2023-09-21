@@ -1,0 +1,11 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ .auth-input{
+  @apply bg-blue-50 px-3 py-4 rounded-md mt-1 outline-none text-blue-950;
+}
